@@ -84,19 +84,12 @@
     hasRowConflictAt: function(rowIndex) {
       // save row in variable
       var total = 0;
-      // iterate each element in current row
-      // for (var i = 0; i < rowIndex.length; i++) {
-      //   total += rowIndex[i]; 
-      // }
-      console.log('ROW', this.get(rowIndex));
-      console.log('INPUT: rowIndex', rowIndex);
       
       var row = this.get(rowIndex);
       for (var i = 0; i < row.length; i++) {
         total += row[i]; 
       }
-      
-           
+          
       return total > 1;
     },
 
@@ -131,20 +124,14 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      // create an array to hold column values
-      var column = [];
-      // iterate over each row
+      
       for (var i = 0; i < this.get(0).length; i++) { 
-        for (var k = 0; k < this.get(0).length; k++) { 
-          column.push(this.get(k)[i]);
-        }
-        if (this.hasColConflictAt(column)) { 
+        if (this.hasColConflictAt(i)) {
           return true;
         }
-        column = [];
       }
       
-      return false; // fixme
+      return false;
     },
 
 

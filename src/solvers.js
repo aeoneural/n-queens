@@ -94,6 +94,7 @@ window.findNQueensSolution = function(n) {
   var solution = new Board({'n': n});
   var finalSolutions = [];
   
+  
   var chessMover = function(row, sol) { 
 
     if ( row === n ) {
@@ -115,7 +116,7 @@ window.findNQueensSolution = function(n) {
   };
 
   chessMover(0, solution);
-
+  console.log(finalSolutions);
   return finalSolutions[0];
 
 };

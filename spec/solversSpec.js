@@ -62,7 +62,6 @@ describe('solvers', function() {
         expect(solutionBoard.get('n')).to.equal(n);
       });
     });
-
   });
 
   describe('countNQueensSolutions()', function() {

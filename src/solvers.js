@@ -39,7 +39,6 @@ window.findNRooksSolution = function(n) {
         
       } else {
         return chessMover(row + 1, sol);
-        // sol.togglePiece();
 
       }
     }
@@ -93,40 +92,31 @@ window.findNQueensSolution = function(n) {
   }  
     
   var solution = new Board({'n': n});
-  var finalSolution;
-  //debugger;
+  var finalSolutions = [];
+  
   var chessMover = function(row, sol) { 
-    // console.log('enter the recursion')
-    // debugger;
+
     if ( row === n ) {
-      //debugger;
-      console.log(sol.rows());
-      finalSolution = sol;
+      finalSolutions.push(JSON.parse(JSON.stringify(sol.rows())));
       return sol; 
     }
     
     for (var col = 0; col < n; col++) { 
       sol.togglePiece(row, col);
-      // consol.log('OUR SOL BEFORE ANY QUEENS', sol);
-      //console.log('in the loop', solution);
+      
       if (sol.hasAnyQueensConflicts()) { 
         sol.togglePiece(row, col);
         
       } else {
-        console.log('sol in else', sol.rows());
-        return chessMover(row + 1, sol);
-        sol.togglePiece(row, col);
-        
+        chessMover(row + 1, sol);
+        sol.togglePiece(row, col);  
       }
     }
   };
 
   chessMover(0, solution);
 
-  //console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
-  //console.log('FINAL SOLUTION', chessMover(0, solution).rows());
-  console.log('final solution', finalSolution.rows());
-  return finalSolution.rows();
+  return finalSolutions[0];
 
 };
 
@@ -136,7 +126,6 @@ window.countNQueensSolutions = function(n) {
   var solutionCount = 0; 
   
   var chessMover = function(row, sol) { 
-    //debugger;
     if ( row === n ) {
       solutionCount += 1;
       return sol; 
@@ -155,6 +144,5 @@ window.countNQueensSolutions = function(n) {
   };
   chessMover(0, solution);
 
- // console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };

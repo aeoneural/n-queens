@@ -197,7 +197,7 @@
     hasAnyMinorDiagonalConflicts: function() {
       var len = this.rows().length;
       
-      for (var i = 0; i < len + 2; i++) {
+      for (var i = 0; i < (len * 2); i++) {
         if (this.hasMinorDiagonalConflictAt(i)) {
           return true;
         }

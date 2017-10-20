@@ -96,7 +96,8 @@
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
       // interate over each row
-      for (var i = 0; i < this.get(0).length; i++) {
+      //if (this.get(0) === undefined) { return false};
+      for (var i = 0; i < this.rows().length; i++) {
         if (this.hasRowConflictAt(i)) {
           return true;
         }
@@ -115,7 +116,8 @@
       // save row in variable
       var total = 0;
       // iterate each element in current row
-      for (var i = 0; i < this.get(0).length; i++) {
+      //if (this.get(0) === undefined) { return false};
+      for (var i = 0; i < this.rows().length; i++) {
         total += this.get(i)[colIndex]; 
       }
               
@@ -125,7 +127,7 @@
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
       
-      for (var i = 0; i < this.get(0).length; i++) { 
+      for (var i = 0; i < this.rows().length; i++) { 
         if (this.hasColConflictAt(i)) {
           return true;
         }
@@ -146,9 +148,9 @@
       var rowIndex = 0;
       var total = 0;
       
-      for (var i = 0; i < this.get(0).length; i++) {
-        if (this.get(rowIndex)[colIndex]) {
-          total += this.get(rowIndex)[colIndex];
+      for (var i = 0; i < this.rows().length; i++) {
+        if (this.rows()[rowIndex][colIndex]) {
+          total += this.rows()[rowIndex][colIndex];
         }
         colIndex += 1;
         rowIndex += 1;
@@ -158,7 +160,7 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      var len = this.get(0).length;
+      var len = this.rows().length;
       
       for (var i = -len; i < len; i++) {
         if (this.hasMajorDiagonalConflictAt(i)) {
@@ -181,9 +183,9 @@
       var rowIndex = 0;
       var total = 0;
       
-      for (var i = 0; i < this.get(0).length; i++) {
-        if (this.get(rowIndex)[colIndex]) {
-          total += this.get(rowIndex)[colIndex];
+      for (var i = 0; i < this.rows().length; i++) {
+        if (this.rows()[rowIndex][colIndex]) {
+          total += this.rows()[rowIndex][colIndex];
         }
         colIndex -= 1;
         rowIndex += 1;
@@ -193,7 +195,7 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      var len = this.get(0).length;
+      var len = this.rows().length;
       
       for (var i = 0; i < len + 2; i++) {
         if (this.hasMinorDiagonalConflictAt(i)) {
